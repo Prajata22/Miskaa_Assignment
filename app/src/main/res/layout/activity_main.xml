@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout"
+    android:background="@color/grey">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimaryDark"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:shimmer_repeat_mode="restart"
+                android:background="@color/grey"
+                android:paddingTop="8dp"
+                app:shimmer_shape="radial">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/shimmer_layout" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:layout_marginTop="8dp"
+                android:descendantFocusability="blocksDescendants"
+                app:reverseLayout="false"/>
+
+            <ImageView
+                android:id="@+id/no_data"
+                android:layout_width="match_parent"
+                android:src="@drawable/no_data"
+                android:visibility="gone"
+                android:layout_marginTop="300dp"
+                android:layout_centerInParent="true"
+                android:layout_height="250dp"/>
+
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:text="@string/delete_all"
+        android:textColor="@color/white"
+        android:layout_marginBottom="35dp"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:backgroundTint="@color/colorPrimary"
+        app:iconTint="@color/white"
+        app:iconGravity="end"
+        app:elevation="5dp"
+        app:fabCustomSize="50dp"
+        app:rippleColor="@color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
