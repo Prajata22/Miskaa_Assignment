@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -57,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_list);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         shimmerFrameLayout = findViewById(R.id.shimmerLayout);
+
+        settingImage(R.drawable.no_data);
+        settingImage(R.drawable.error);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -187,6 +193,30 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         if(swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    private void settingImage(int id) {
+        Display display = getWindowManager().getDefaultDisplay();
+        int displayWidth = display.getWidth();
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+
+        BitmapFactory.decodeResource(getResources(), id, options);
+
+        int width = options.outWidth;
+        if (width > displayWidth) {
+            options.inSampleSize = Math.round((float) width / (float) displayWidth);
+        }
+        options.inJustDecodeBounds = false;
+
+        Bitmap scaledBitmap =  BitmapFactory.decodeResource(getResources(), id, options);
+
+        if(id == R.drawable.no_data) {
+            no_data.setImageBitmap(scaledBitmap);
+        }
+        else {
+            error.setImageBitmap(scaledBitmap);
         }
     }
 }

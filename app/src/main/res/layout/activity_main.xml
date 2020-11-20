@@ -64,7 +64,6 @@
             <ImageView
                 android:id="@+id/error"
                 android:layout_width="match_parent"
-                android:src="@drawable/error"
                 android:visibility="gone"
                 android:layout_marginTop="300dp"
                 android:layout_centerInParent="true"
@@ -73,7 +72,6 @@
             <ImageView
                 android:id="@+id/no_data"
                 android:layout_width="match_parent"
-                android:src="@drawable/no_data"
                 android:visibility="gone"
                 android:layout_marginTop="300dp"
                 android:layout_centerInParent="true"
