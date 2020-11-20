@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
             fetchSvg(context, currentItem.getFlag(), holder.flag);
         }
         else {
-            holder.flag.setImageResource(R.drawable.flag);
+            settingImage(holder.flag);
         }
 
         if(currentItem.getBorders() != null && currentItem.getBorders().size() != 0) {
@@ -166,7 +165,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                target.setImageResource(R.drawable.flag);
+                settingImage(target);
             }
 
             @Override
@@ -176,5 +175,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
                 stream.close();
             }
         });
+    }
+
+    private void settingImage(ImageView imageView) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = calculateInSampleSize(options);
+        options.inJustDecodeBounds = false;
+        Bitmap scaledBitmap =  BitmapFactory.decodeResource(context.getResources(), R.drawable.flag, options);
+        imageView.setImageBitmap(scaledBitmap);
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > 150 || width > 150) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            while ((halfHeight / inSampleSize) >= 150 && (halfWidth / inSampleSize) >= 150) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 }

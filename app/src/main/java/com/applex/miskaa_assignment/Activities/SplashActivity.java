@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.widget.ImageView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.applex.miskaa_assignment.R;
 

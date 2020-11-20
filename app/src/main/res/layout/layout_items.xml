@@ -31,7 +31,6 @@
                     android:id="@+id/flag"
                     android:layout_width="140dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/flag"
                     android:scaleType="fitXY"
                     android:contentDescription="@string/flag" />
 
