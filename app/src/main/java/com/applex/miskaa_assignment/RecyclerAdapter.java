@@ -1,6 +1,7 @@
 package com.applex.miskaa_assignment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.pixplicity.sharp.Sharp;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -25,11 +28,23 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
+import okhttp3.Cache;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.ProgrammingViewHolder> {
 
+    private final Context context;
     private final List<CountryModel> mList;
+    private OkHttpClient httpClient;
 
-    public RecyclerAdapter(List<CountryModel> list) { this.mList = list; }
+    public RecyclerAdapter(Context context, List<CountryModel> list) {
+        this.mList = list;
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -74,10 +89,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
         holder.population.setText("Population: " + currentItem.getPopulation());
 
         if (currentItem.getFlag() != null && !currentItem.getFlag().isEmpty()) {
-            Picasso.get().load(currentItem.getFlag())
-                    .resize(R.dimen.image_preview_width, R.dimen.image_preview_height)
-                    .error(R.drawable.ic_account_circle_black_24dp)
-                    .into(holder.flag);
+//            Picasso.get().load(currentItem.getFlag())
+//                    .resize(R.dimen.image_preview_width, R.dimen.image_preview_height)
+//                    .error(R.drawable.ic_account_circle_black_24dp)
+//                    .into(holder.flag);
 //            holder.flag.setImageURI(Uri.parse(currentItem.getFlag()));
 //            Picasso.get().load(currentItem.getFlag()).resize(R.dimen.image_preview_width, R.dimen.image_preview_height).into(new Target() {
 //                @Override
@@ -95,6 +110,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
 //
 //                }
 //            });
+
+            fetchSvg(context, currentItem.getFlag(), holder.flag);
         }
         else {
             Log.e("BAMCHIKI", "1");
@@ -160,5 +177,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
             languagesHeader = view.findViewById(R.id.languagesHeader);
             flag = view.findViewById(R.id.flag);
         }
+    }
+
+    private void fetchSvg(Context context, String url, final ImageView target) {
+        if (httpClient == null) {
+            httpClient = new OkHttpClient.Builder()
+                    .cache(new Cache(context.getCacheDir(), 5 * 1024 * 1014))
+                    .build();
+        }
+
+        Request request = new Request.Builder().url(url).build();
+        httpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                target.setImageResource(R.drawable.ic_account_circle_black_24dp);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                InputStream stream = response.body().byteStream();
+                Sharp.loadInputStream(stream).into(target);
+                stream.close();
+            }
+        });
     }
 }

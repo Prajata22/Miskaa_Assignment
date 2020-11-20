@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             shimmerFrameLayout.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
             countryModelArrayList = database.daoInterface().getAll();
-            adapter = new RecyclerAdapter(countryModelArrayList);
+            adapter = new RecyclerAdapter(MainActivity.this, countryModelArrayList);
             recyclerView.setAdapter(adapter);
         }
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setVisibility(View.VISIBLE);
                 database.daoInterface().insert(response.body());
                 countryModelArrayList = database.daoInterface().getAll();
-                adapter = new RecyclerAdapter(countryModelArrayList);
+                adapter = new RecyclerAdapter(MainActivity.this, countryModelArrayList);
                 recyclerView.setAdapter(adapter);
             }
 
