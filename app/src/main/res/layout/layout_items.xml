@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/very_light_grey"
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="8dp"
         android:elevation="5dp">
@@ -19,28 +19,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="15dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp">
+                android:layout_marginEnd="15dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
+                <ImageView
+                    android:id="@+id/flag"
+                    android:layout_width="140dp"
                     android:layout_height="100dp"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="50dp">
-
-                    <ImageView
-                        android:id="@+id/flag"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/flag"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/flag" />
-
-                </androidx.cardview.widget.CardView>
+                    android:src="@drawable/flag"
+                    android:scaleType="fitXY"
+                    android:contentDescription="@string/flag" />
 
             </LinearLayout>
 
@@ -48,101 +41,166 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginEnd="10dp">
+                android:layout_marginTop="-5dp">
 
                 <TextView
                     android:id="@+id/country_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:paddingHorizontal="10dp"
-                    android:paddingTop="10dp"
                     android:text="@string/india"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/capital"
+                <LinearLayout
+                    android:id="@+id/capital_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/capital_new_delhi"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/light_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
-                <TextView
-                    android:id="@+id/region"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/region_asia"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/grey_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/capital"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/sub_region"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sub_region_southern_asia"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/grey_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/capital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/capital_new_delhi"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/population"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/population_1300000000"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/grey_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/bordersHeader"
+                <LinearLayout
+                    android:id="@+id/region_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/bordersHeader"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
 
-                <TextView
-                    android:id="@+id/borders"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/borders"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/grey_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/region"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/languagesHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/languagesHeader"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/region"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/region_asia"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/languages"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sub_region_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/languages"
-                    android:paddingHorizontal="10dp"
-                    android:textColor="@color/grey_black"
-                    android:paddingTop="5dp"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="10dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sub_region"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/sub_region"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sub_region_southern_asia"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/population_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/population"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/population"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/population_1300000000"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/borders_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bordersHeader"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/borders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/borders"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/languages_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/languagesHeader"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/languages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/languages"
+                        android:textColor="@color/dark_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

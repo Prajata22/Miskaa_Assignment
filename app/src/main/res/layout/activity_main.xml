@@ -46,10 +46,6 @@
                     <include layout="@layout/layout_shimmer" />
                     <include layout="@layout/layout_shimmer" />
                     <include layout="@layout/layout_shimmer" />
-                    <include layout="@layout/layout_shimmer" />
-                    <include layout="@layout/layout_shimmer" />
-                    <include layout="@layout/layout_shimmer" />
-                    <include layout="@layout/layout_shimmer" />
 
                 </LinearLayout>
 

@@ -1,16 +1,20 @@
 <resources>
     <string name="app_name">Miskaa_Assignment</string>
     <string name="india">India</string>
-    <string name="capital_new_delhi">Capital: New Delhi</string>
-    <string name="region_asia">Region: Asia</string>
-    <string name="sub_region_southern_asia">Sub Region: Southern Asia</string>
+    <string name="capital_new_delhi">New Delhi</string>
+    <string name="region_asia">Asia</string>
+    <string name="sub_region_southern_asia">Southern Asia</string>
     <string name="bordersHeader">Borders:</string>
     <string name="borders">TK, AWB, UZB</string>
     <string name="languagesHeader">Languages:</string>
     <string name="languages">Bengali, Hindi, English</string>
-    <string name="population_1300000000">Population: 1300000000</string>
+    <string name="population_1300000000">1300000000</string>
     <string name="delete_all">Delete All</string>
     <string name="flag">flag</string>
     <string name="from">from</string>
     <string name="prajata_samanta">Prajata Samanta</string>
+    <string name="capital">Capital:</string>
+    <string name="region">Region:</string>
+    <string name="sub_region">Sub Region:</string>
+    <string name="population">Population:</string>
 </resources>

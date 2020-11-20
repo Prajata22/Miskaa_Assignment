@@ -9,8 +9,9 @@
     <color name="light_black">#212121</color>
     <color name="transparent_light_black">#55212121</color>
     <color name="light_grey">#F2F2F2</color>
+    <color name="very_light_grey">#F9F9F9</color>
     <color name="grey">#D4D4D4</color>
-    <color name="dark_grey">#A2A2A2</color>
+    <color name="dark_grey">#878787</color>
     <color name="grey_black">#454545</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#0072B1</color>

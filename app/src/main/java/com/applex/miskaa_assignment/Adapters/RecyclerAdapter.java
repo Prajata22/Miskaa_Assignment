@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,27 +54,32 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
         }
 
         if(currentItem.getCapital() != null && !currentItem.getCapital().isEmpty()) {
-            holder.capital.setText("Capital: " + currentItem.getCapital());
+            holder.capital.setText(currentItem.getCapital());
         }
         else {
-            holder.capital.setVisibility(View.GONE);
+            holder.capital_layout.setVisibility(View.GONE);
         }
 
         if(currentItem.getRegion() != null && !currentItem.getRegion().isEmpty()) {
-            holder.region.setText("Region: " + currentItem.getRegion());
+            holder.region.setText(currentItem.getRegion());
         }
         else {
-            holder.region.setVisibility(View.GONE);
+            holder.region_layout.setVisibility(View.GONE);
         }
 
         if(currentItem.getSubregion() != null && !currentItem.getSubregion().isEmpty()) {
-            holder.sub_region.setText("Sub Region: " + currentItem.getSubregion());
+            holder.sub_region.setText(currentItem.getSubregion());
         }
         else {
-            holder.sub_region.setVisibility(View.GONE);
+            holder.sub_region_layout.setVisibility(View.GONE);
         }
 
-        holder.population.setText("Population: " + currentItem.getPopulation());
+        if(String.valueOf(currentItem.getPopulation()) != null && !String.valueOf(currentItem.getPopulation()).isEmpty()) {
+            holder.population.setText(String.valueOf(currentItem.getPopulation()));
+        }
+        else {
+            holder.population_layout.setVisibility(View.GONE);
+        }
 
         if (currentItem.getFlag() != null && !currentItem.getFlag().isEmpty()) {
             fetchSvg(context, currentItem.getFlag(), holder.flag);
@@ -95,8 +101,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
             holder.borders.setText(borders.toString());
         }
         else {
-            holder.bordersHeader.setVisibility(View.GONE);
-            holder.borders.setVisibility(View.GONE);
+            holder.borders_layout.setVisibility(View.GONE);
         }
 
         if(currentItem.getLanguages() != null && currentItem.getLanguages().size() != 0) {
@@ -112,8 +117,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
             holder.languages.setText(languages.toString());
         }
         else {
-            holder.languagesHeader.setVisibility(View.GONE);
-            holder.languages.setVisibility(View.GONE);
+            holder.languages_layout.setVisibility(View.GONE);
         }
     }
 
@@ -124,21 +128,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
 
     public static class ProgrammingViewHolder extends RecyclerView.ViewHolder {
 
-        TextView country_name, capital, region, sub_region, population, borders, bordersHeader, languages, languagesHeader;
+        LinearLayout capital_layout, region_layout, sub_region_layout, population_layout, borders_layout, languages_layout;
+        TextView country_name, capital, region, sub_region, population, borders, languages;
         ImageView flag;
 
         private ProgrammingViewHolder(@NonNull View view) {
             super(view);
 
+            capital_layout = view.findViewById(R.id.capital_layout);
+            region_layout = view.findViewById(R.id.region_layout);
+            sub_region_layout = view.findViewById(R.id.sub_region_layout);
+            population_layout = view.findViewById(R.id.population_layout);
+            borders_layout = view.findViewById(R.id.borders_layout);
+            languages_layout = view.findViewById(R.id.languages_layout);
             country_name = view.findViewById(R.id.country_name);
             capital = view.findViewById(R.id.capital);
             region = view.findViewById(R.id.region);
             sub_region = view.findViewById(R.id.sub_region);
             population = view.findViewById(R.id.population);
             borders = view.findViewById(R.id.borders);
-            bordersHeader = view.findViewById(R.id.bordersHeader);
             languages = view.findViewById(R.id.languages);
-            languagesHeader = view.findViewById(R.id.languagesHeader);
             flag = view.findViewById(R.id.flag);
         }
     }

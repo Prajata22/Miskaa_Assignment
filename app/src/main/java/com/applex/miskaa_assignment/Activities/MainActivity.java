@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ExtendedFloatingActionButton delete;
     private ShimmerFrameLayout shimmerFrameLayout;
     private CoordinatorLayout main_layout;
-    private List<CountryModel> countryModelArrayList = new ArrayList<>();
+    private List<CountryModel> countryModelArrayList;
     private RoomDatabase database;
     private IntroPref introPref;
     private RecyclerAdapter adapter;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         introPref = new IntroPref(this);
         database = RoomDatabase.getInstance(this);
+        countryModelArrayList = new ArrayList<>();
 
         error = findViewById(R.id.error);
         delete = findViewById(R.id.delete);
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 .setColorSchemeColors(getResources().getColor(R.color.purple_500),
                  getResources().getColor(R.color.purple_700));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            swipeRefreshLayout.setRefreshing(true);
             if(introPref.isFirstTimeLaunch()) {
                 if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() == null) {
                     recyclerView.setVisibility(View.GONE);
