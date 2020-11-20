@@ -11,5 +11,6 @@
     <string name="population_1300000000">Population: 1300000000</string>
     <string name="delete_all">Delete All</string>
     <string name="flag">flag</string>
-
+    <string name="from">from</string>
+    <string name="prajata_samanta">Prajata Samanta</string>
 </resources>

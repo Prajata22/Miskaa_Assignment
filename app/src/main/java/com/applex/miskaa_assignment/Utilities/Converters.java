@@ -1,6 +1,7 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Utilities;
 
 import androidx.room.TypeConverter;
+import com.applex.miskaa_assignment.Models.LanguageModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;

@@ -1,5 +1,6 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Utilities;
 
+import com.applex.miskaa_assignment.Interfaces.APIInterface;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

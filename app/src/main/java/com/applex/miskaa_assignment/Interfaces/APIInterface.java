@@ -1,7 +1,7 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Interfaces;
 
+import com.applex.miskaa_assignment.Models.CountryModel;
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 

@@ -27,15 +27,16 @@
                 android:layout_marginStart="5dp">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="40dp">
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="12dp"
+                    app:cardCornerRadius="50dp">
 
                     <ImageView
                         android:id="@+id/flag"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:src="@drawable/flag"
                         android:scaleType="centerCrop"
                         android:contentDescription="@string/flag" />
 

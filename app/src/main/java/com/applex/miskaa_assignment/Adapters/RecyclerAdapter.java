@@ -1,33 +1,20 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.loader.content.AsyncTaskLoader;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.applex.miskaa_assignment.Models.CountryModel;
+import com.applex.miskaa_assignment.R;
 import com.pixplicity.sharp.Sharp;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
-
 import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -49,7 +36,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
     @NonNull
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_items, parent, false);
         return new ProgrammingViewHolder(v);
     }
 
@@ -89,33 +76,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
         holder.population.setText("Population: " + currentItem.getPopulation());
 
         if (currentItem.getFlag() != null && !currentItem.getFlag().isEmpty()) {
-//            Picasso.get().load(currentItem.getFlag())
-//                    .resize(R.dimen.image_preview_width, R.dimen.image_preview_height)
-//                    .error(R.drawable.ic_account_circle_black_24dp)
-//                    .into(holder.flag);
-//            holder.flag.setImageURI(Uri.parse(currentItem.getFlag()));
-//            Picasso.get().load(currentItem.getFlag()).resize(R.dimen.image_preview_width, R.dimen.image_preview_height).into(new Target() {
-//                @Override
-//                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-//                    holder.flag.setImageBitmap(bitmap);
-//                }
-//
-//                @Override
-//                public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-//                    Log.e("BAMCHIKI", e.getMessage());
-//                }
-//
-//                @Override
-//                public void onPrepareLoad(Drawable placeHolderDrawable) {
-//
-//                }
-//            });
-
             fetchSvg(context, currentItem.getFlag(), holder.flag);
         }
         else {
-            Log.e("BAMCHIKI", "1");
-            holder.flag.setImageResource(R.drawable.ic_account_circle_black_24dp);
+            holder.flag.setImageResource(R.drawable.flag);
         }
 
         if(currentItem.getBorders() != null && currentItem.getBorders().size() != 0) {
@@ -182,7 +146,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
     private void fetchSvg(Context context, String url, final ImageView target) {
         if (httpClient == null) {
             httpClient = new OkHttpClient.Builder()
-                    .cache(new Cache(context.getCacheDir(), 5 * 1024 * 1014))
+                    .cache(new Cache(context.getCacheDir(), 20 * 1024 * 1024))
                     .build();
         }
 
@@ -190,7 +154,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter <RecyclerAdapter.Progr
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                target.setImageResource(R.drawable.ic_account_circle_black_24dp);
+                target.setImageResource(R.drawable.flag);
             }
 
             @Override

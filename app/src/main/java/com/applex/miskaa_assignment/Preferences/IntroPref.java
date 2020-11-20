@@ -1,4 +1,4 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Preferences;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

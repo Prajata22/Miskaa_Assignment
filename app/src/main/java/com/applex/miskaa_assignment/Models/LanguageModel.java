@@ -1,4 +1,4 @@
-package com.applex.miskaa_assignment;
+package com.applex.miskaa_assignment.Models;
 
 public class LanguageModel {
 

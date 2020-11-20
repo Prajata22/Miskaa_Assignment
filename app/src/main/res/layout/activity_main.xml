@@ -42,14 +42,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
-                    <include layout="@layout/shimmer_layout" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
+                    <include layout="@layout/layout_shimmer" />
 
                 </LinearLayout>
 
@@ -60,10 +60,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:paddingTop="8dp"
                 android:overScrollMode="never"
-                android:layout_marginTop="8dp"
                 android:descendantFocusability="blocksDescendants"
                 app:reverseLayout="false"/>
+
+            <ImageView
+                android:id="@+id/error"
+                android:layout_width="match_parent"
+                android:src="@drawable/error"
+                android:visibility="gone"
+                android:layout_marginTop="300dp"
+                android:layout_centerInParent="true"
+                android:layout_height="250dp"/>
 
             <ImageView
                 android:id="@+id/no_data"
@@ -82,19 +91,18 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="16dp"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:iconTint="@color/white"
+        android:textSize="14sp"
+        app:iconPadding="13dp"
+        android:backgroundTint="@color/red"
+        app:iconSize="20dp"
         android:text="@string/delete_all"
         android:textColor="@color/white"
-        android:layout_marginBottom="35dp"
-        android:padding="5dp"
-        android:scaleType="fitXY"
-        app:icon="@drawable/ic_baseline_delete_24"
-        app:backgroundTint="@color/colorPrimary"
-        app:iconTint="@color/white"
-        app:iconGravity="end"
-        app:elevation="5dp"
-        app:fabCustomSize="50dp"
-        app:rippleColor="@color/white" />
+        android:layout_marginEnd="20dp"
+        app:elevation="10dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="30dp"
+        android:padding="10dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
